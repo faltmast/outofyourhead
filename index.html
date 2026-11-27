@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="index, follow">
+<meta name="description" content="Sound journeys, movement and ceremonies rooted in the ancestral traditions of Mexico, guided by Ro Quetzalcoatl in Berlin.">
+<title>Ro Quetzalcoatl Website</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+/* Layout: one long warm page. Desert sunrise hero with the logo dragon living on the horizon, tile bands between sections, burgundy statement band, stamp-like cards. Single light look on purpose (Desierto). */
+:root {
+  --cream: #f8efe2;
+  --sand: #f1e0c6;
+  --dune: #e9c9a0;
+  --marigold: #e9a23b;
+  --terracotta: #c8643b;
+  --coral: #e2553b;
+  --burgundy: #7a1f3d;
+  --purple: #6b3a78;
+  --teal: #1f7a6d;
+  --ink: #3f0f22;
+  --display: "Young Serif", Georgia, "Times New Roman", serif;
+  --body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius: 22px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--cream); }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; color: var(--burgundy); }
+p { margin: 0; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+.kicker { font-size: 13px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--terracotta); }
+.btn { display: inline-flex; align-items: center; gap: 10px; font-family: var(--body); font-weight: 600; font-size: 16px; text-decoration: none; padding: 14px 22px; border-radius: 999px; background: var(--burgundy); color: var(--cream); border: 0; cursor: pointer; transition: transform .2s, background .2s; }
+.btn:hover { background: #651832; transform: translateY(-2px); }
+.btn.ghost { background: transparent; color: var(--burgundy); box-shadow: inset 0 0 0 2px var(--burgundy); }
+.btn.ghost:hover { background: var(--burgundy); color: var(--cream); }
+.btn.sun { background: var(--marigold); color: var(--ink); }
+.btn svg { width: 18px; height: 18px; }
+.ph { position: absolute; left: 10px; bottom: 10px; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; background: rgba(248,239,226,.9); color: var(--burgundy); padding: 3px 8px; border-radius: 999px; }
+.note { font-size: 13px; opacity: .75; }
+
+/* Draft strip + nav */
+.draft { background: var(--ink); color: var(--cream); font-size: 12.5px; text-align: center; padding-block: 6px; }
+.draft .wrap { display: flex; justify-content: center; gap: 6px 14px; flex-wrap: wrap; }
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(248,239,226,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid #7a1f3d14; }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand svg { width: 46px; height: 46px; }
+.brand b { font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--burgundy); line-height: 1; }
+.links { display: flex; gap: 22px; font-size: 15px; font-weight: 500; }
+.links a { text-decoration: none; }
+.links a:hover { color: var(--terracotta); }
+.nav .btn { padding: 10px 16px; font-size: 14px; }
+@media (max-width: 860px) { .links { display: none; } }
+@media (max-width: 440px) { .brand b { font-size: 17px; } .brand svg { width: 34px; height: 34px; } .nav .btn { padding: 9px 12px; font-size: 13px; } }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; background: linear-gradient(180deg, #f8efe2 0%, #f6dcc0 62%, #f1caa0 100%); }
+.hero .wrap { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 24px; align-items: center; padding-block: 56px 0; min-height: 640px; }
+.hero-copy { display: grid; gap: 18px; align-content: center; padding-bottom: 230px; }
+.hero h1 { font-size: clamp(44px, 7.4vw, 92px); line-height: .98; letter-spacing: -.01em; }
+.hero .sub { font-size: clamp(17px, 1.6vw, 19px); max-width: 34em; }
+.hero .three { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: clamp(16px, 1.5vw, 18px); }
+.hero .three b { font-family: var(--display); font-weight: 400; color: var(--burgundy); }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.sunbox { position: relative; align-self: end; height: 100%; min-height: 420px; }
+.sunbox svg { position: absolute; left: 50%; bottom: 70px; width: min(560px, 120%); transform: translateX(-50%); overflow: visible; }
+.rays { transform-origin: 280px 300px; animation: spin 80s linear infinite; }
+.sun-rise { animation: rise 2.4s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes rise { from { transform: translateY(40px); } to { transform: translateY(0); } }
+.dunes { position: absolute; left: 0; right: 0; bottom: 0; height: 230px; z-index: 1; pointer-events: none; }
+.dunes svg { width: 100%; height: 100%; display: block; }
+.horizon { position: absolute; left: 0; right: 0; bottom: 118px; height: 90px; z-index: 3; pointer-events: none; }
+.horizon svg { width: 100%; height: 100%; display: block; overflow: visible; }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; min-height: 0; padding-block: 36px 0; }
+  .hero-copy { padding-bottom: 0; }
+  .sunbox { min-height: 300px; }
+  .sunbox svg { bottom: 40px; width: 420px; }
+  .horizon { bottom: 92px; height: 70px; }
+  .dunes { height: 170px; }
+}
+
+/* Bands */
+.zig { height: 26px; display: block; width: 100%; }
+.marquee { background: var(--burgundy); color: var(--cream); overflow: hidden; padding-block: 16px; }
+.marquee .track { display: flex; width: max-content; gap: 34px; animation: slide 38s linear infinite; font-family: var(--display); font-size: clamp(22px, 3vw, 32px); white-space: nowrap; align-items: center; }
+.marquee .track span { display: inline-flex; align-items: center; gap: 34px; }
+.marquee svg { width: 30px; height: 30px; flex: none; }
+@keyframes slide { to { transform: translateX(-50%); } }
+
+/* Sections */
+section { scroll-margin-top: 70px; }
+.sec { padding-block: 88px; }
+.sec-head { display: grid; gap: 12px; max-width: 46em; margin-bottom: 40px; }
+.sec-head h2 { font-size: clamp(34px, 4.6vw, 54px); line-height: 1.04; }
+.sec-head p { font-size: 18px; }
+
+/* Next journeys */
+.dates { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.date-card { background: #fff8ee; border-radius: var(--radius); padding: 22px; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; box-shadow: 0 1px 0 #7a1f3d14, 0 18px 40px -26px #7a1f3d55; transition: transform .25s; }
+.date-card:hover { transform: translateY(-4px) rotate(-.4deg); }
+.date-top { display: flex; gap: 14px; align-items: center; }
+.datebox { width: 74px; height: 80px; border-radius: 14px; background: var(--marigold); display: grid; place-items: center; text-align: center; line-height: 1; flex: none; }
+.datebox b { font-family: var(--display); font-weight: 400; font-size: 30px; color: var(--ink); display: block; }
+.datebox small { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.datebox.tbd { background: var(--dune); }
+.datebox.tbd b { font-size: 18px; }
+.date-card h3 { font-size: 23px; line-height: 1.15; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 14px; color: var(--terracotta); font-weight: 600; }
+.date-card .btn { justify-self: start; padding: 10px 16px; font-size: 14px; }
+.bento { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 14px; }
+.bento > * { border-radius: var(--radius); padding: 26px; display: grid; align-content: start; gap: 10px; min-width: 0; }
+.b-photo { grid-column: 1 / 4; grid-row: 1 / 4; padding: 0; overflow: hidden; min-height: 420px; display: block; position: relative; }
+.b-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+.b-title { grid-column: 4 / 10; background: var(--burgundy); color: var(--cream); padding: 32px 34px; gap: 12px; }
+.b-title .event-when { color: var(--marigold); }
+.b-title h3 { font-size: clamp(48px, 6vw, 78px); line-height: .95; letter-spacing: .02em; color: var(--cream); }
+.b-title .event-sub { font-family: var(--display); font-size: 21px; line-height: 1.3; color: #f6dcc0; margin: 0; }
+.b-part { background: #fff8ee; grid-column: span 2; }
+.b-part svg { width: 64px; height: 64px; margin-bottom: 4px; }
+.b-label { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--terracotta); }
+.b-part p, .b-where p { margin: 0; font-size: 16px; line-height: 1.45; }
+.b-where { grid-column: 4 / 7; background: var(--sand); }
+.b-where .note { font-size: 14px; margin-top: 4px; }
+.b-ticket { grid-column: 7 / 10; background: var(--marigold); color: var(--ink); }
+.b-ticket .b-label { color: var(--burgundy); }
+.b-ticket b { font-family: var(--display); font-weight: 400; font-size: 40px; line-height: 1; }
+.b-ticket span.s { font-size: 15px; }
+.b-ticket .btn { justify-self: start; margin-top: 6px; }
+.b-tg { grid-column: 1 / 10; background: var(--teal); color: var(--cream); padding: 20px 26px; display: flex; align-items: center; justify-content: space-between; gap: 16px; text-decoration: none; font-weight: 600; font-size: 17px; }
+.b-tg b { font-family: var(--display); font-weight: 400; font-size: 22px; }
+.b-tg svg { width: 22px; height: 22px; flex: none; }
+.event-when { font-size: 13px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+@media (max-width: 860px) { .bento { grid-template-columns: 1fr; } .bento > * { grid-column: 1 / -1 !important; grid-row: auto !important; } .b-photo { min-height: 0; aspect-ratio: 4 / 3; } }
+@media (max-width: 900px) { .dates { grid-template-columns: 1fr; } }
+
+/* Journeys */
+.journeys { background: var(--sand); }
+.jgrid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; }
+.jcard { grid-column: span 2; background: var(--cream); border-radius: var(--radius); padding: 22px 22px 24px; display: grid; gap: 12px; align-content: start; position: relative; overflow: hidden; }
+.jcard.wide { grid-column: span 3; }
+.jcard .ill { width: 110px; height: 110px; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+.jcard:hover .ill { transform: rotate(-8deg) scale(1.06); }
+.jcard h3 { font-size: 26px; line-height: 1.1; }
+.jcard .facts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.jcard .facts span { font-size: 12.5px; font-weight: 600; background: var(--sand); color: var(--burgundy); padding: 4px 10px; border-radius: 999px; }
+@media (max-width: 960px) { .jgrid { grid-template-columns: 1fr 1fr; } .jcard, .jcard.wide { grid-column: span 1; } .jcard.last { grid-column: 1 / -1; } }
+@media (max-width: 600px) { .jgrid { grid-template-columns: 1fr; } .jcard.last { grid-column: auto; } }
+
+/* Flow */
+.flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; position: relative; margin-top: 56px; }
+.flow-line { position: absolute; left: 0; right: 0; top: 6px; height: 60px; pointer-events: none; }
+.flow-line svg { width: 100%; height: 100%; overflow: visible; }
+.step { position: relative; z-index: 1; padding-top: 70px; display: grid; gap: 6px; }
+.step .dot { position: absolute; top: 18px; left: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--marigold); display: grid; place-items: center; font-family: var(--display); color: var(--ink); box-shadow: 0 0 0 6px var(--sand); }
+.step h3 { font-size: 22px; }
+.quote-line { margin-top: 30px; font-family: var(--display); font-size: 20px; color: var(--purple); max-width: 40em; }
+@media (max-width: 760px) { .flow { grid-template-columns: 1fr 1fr; } .flow-line { display: none; } .step { padding-top: 52px; } .step .dot { top: 4px; } }
+
+/* Statement */
+.statement { background: var(--burgundy); color: var(--cream); position: relative; overflow: hidden; }
+.statement .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: center; padding-block: 90px; position: relative; z-index: 1; }
+.statement h2 { color: var(--cream); font-size: clamp(42px, 7vw, 96px); line-height: .98; }
+.statement h2 em { font-style: normal; color: var(--marigold); }
+.statement p { margin-top: 18px; font-size: 18px; max-width: 36em; opacity: .9; }
+.pulse { width: 260px; height: 260px; }
+.pulse .core { transform-origin: 130px 130px; animation: breathe 6s ease-in-out infinite; }
+@keyframes breathe { 50% { transform: scale(1.08); } }
+.statement .bgring { position: absolute; right: -180px; top: -180px; width: 620px; opacity: .14; z-index: 0; }
+.statement .bgring g { transform-origin: 310px 310px; animation: spin 120s linear infinite reverse; }
+@media (max-width: 760px) { .statement .wrap { grid-template-columns: 1fr; } .pulse { width: 180px; height: 180px; } }
+
+/* Hero clip */
+#sunrays { position: absolute; inset: 0; }
+.clip { position: absolute; left: 50%; bottom: 175px; transform: translateX(-50%); width: 280px; max-width: 70%; aspect-ratio: 9 / 14; margin: 0; border-radius: 160px 160px 22px 22px; overflow: hidden; box-shadow: 0 0 0 8px var(--cream), 0 30px 60px -30px #3f0f2299; z-index: 2; background: var(--dune); }
+.clip video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sound { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; font: 600 13px var(--body); padding: 9px 14px; border-radius: 999px; border: 0; background: rgba(248,239,226,.94); color: var(--burgundy); cursor: pointer; white-space: nowrap; }
+.sound svg { width: 18px; height: 18px; }
+.sound[aria-pressed="true"] { background: var(--burgundy); color: var(--cream); }
+@media (max-width: 860px) { .sunbox { min-height: 520px; } .clip { width: 230px; bottom: 140px; } }
+
+/* Gallery */
+.live { padding-bottom: 72px; }
+.live .sec-head { margin-bottom: 28px; }
+.gallery { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px max(18px, env(safe-area-inset-left, 0px)) 18px; scrollbar-width: thin; }
+.gallery figure { flex: 0 0 auto; width: clamp(220px, 26vw, 300px); margin: 0; scroll-snap-align: start; display: grid; gap: 8px; }
+.gallery img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius); }
+.gallery figure:nth-child(even) img { border-radius: 150px 150px var(--radius) var(--radius); }
+.gallery figcaption { font-size: 14px; font-weight: 600; color: var(--terracotta); }
+@media (min-width: 1200px) { .gallery { padding-left: calc((100vw - 1160px) / 2 + 18px); } }
+
+/* Voices */
+.voices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.voice { background: #fff8ee; border-radius: var(--radius); padding: 26px; display: grid; gap: 16px; align-content: space-between; position: relative; }
+.voice::before { content: "\201C"; font-family: var(--display); font-size: 90px; line-height: .6; color: var(--marigold); }
+.voice blockquote { margin: 0; font-family: var(--display); font-size: 23px; line-height: 1.25; color: var(--burgundy); }
+.voice cite { font-style: normal; font-size: 14px; color: var(--terracotta); font-weight: 600; }
+.voice.wide { grid-column: 1 / -1; text-align: center; justify-items: center; padding: 34px 26px; }
+.voice.wide blockquote { font-size: clamp(24px, 3vw, 34px); max-width: 26em; }
+.voice:nth-child(2) { transform: translateY(24px); }
+@media (max-width: 860px) { .voices { grid-template-columns: 1fr; } .voice:nth-child(2) { transform: none; } }
+
+/* Ceremonies */
+.cer { background: var(--sand); }
+.cer .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.cer-art { aspect-ratio: 1; max-width: 460px; width: 100%; justify-self: center; }
+.cer-art .turn { transform-origin: 200px 200px; animation: spin 60s linear infinite; }
+.cer ul { list-style: none; margin: 22px 0 26px; padding: 0; display: grid; gap: 12px; }
+.cer li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; font-size: 17px; }
+.cer li svg { width: 28px; height: 28px; margin-top: 1px; }
+.cer li b { color: var(--burgundy); }
+.cer-cta { background: var(--cream); border-radius: var(--radius); padding: 22px; display: grid; gap: 16px; box-shadow: 0 18px 40px -26px #7a1f3d55; }
+.cer-cta ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.cer-cta li { display: grid; grid-template-columns: 30px 1fr; gap: 10px; align-items: center; font-size: 16px; }
+.cer-cta li b { width: 30px; height: 30px; border-radius: 50%; background: var(--marigold); display: grid; place-items: center; font-family: var(--display); font-weight: 400; color: var(--ink); }
+.btn.big { justify-content: center; font-size: 18px; padding: 17px 26px; background: var(--coral); color: #fff8ee; }
+.btn.big:hover { background: var(--terracotta); }
+@media (max-width: 860px) { .cer .wrap { grid-template-columns: 1fr; } }
+
+/* About */
+.about .wrap { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 48px; align-items: center; }
+.portrait { position: relative; border-radius: 200px 200px var(--radius) var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--dune); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; transform: scale(1.15); transform-origin: 12% 100%; }
+.about-copy { display: grid; gap: 16px; }
+.about-copy p { font-size: 17.5px; }
+.creds { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
+.creds div { background: #fff8ee; border-radius: 14px; padding: 12px 14px; font-size: 14px; }
+.creds b { display: block; font-family: var(--display); font-weight: 400; font-size: 19px; color: var(--burgundy); }
+@media (max-width: 860px) { .about .wrap { grid-template-columns: 1fr; } .portrait { max-width: 420px; } }
+
+/* Venues */
+.venues { background: var(--teal); color: var(--cream); }
+.venues .sec-head h2, .venues h3 { color: var(--cream); }
+.vgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.vcard { background: #ffffff12; border: 1px solid #f8efe233; border-radius: var(--radius); padding: 24px; display: grid; gap: 10px; align-content: start; }
+.vcard svg { width: 54px; height: 54px; }
+.vcard h3 { font-size: 24px; }
+.pdf { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 14px; margin-top: 6px; color: var(--marigold); }
+.venues .ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+@media (max-width: 860px) { .vgrid { grid-template-columns: 1fr; } }
+
+/* Signup */
+.signup { text-align: center; position: relative; overflow: hidden; }
+.signup .wrap { display: grid; justify-items: center; gap: 18px; padding-block: 100px; position: relative; z-index: 1; }
+.signup h2 { font-size: clamp(38px, 5.4vw, 66px); line-height: 1; }
+.signup p { font-size: 18px; max-width: 32em; }
+.form { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px; width: 100%; max-width: 520px; }
+.form input { flex: 1 1 240px; min-width: 0; font: inherit; padding: 14px 18px; border-radius: 999px; border: 2px solid var(--dune); background: #fff8ee; color: var(--ink); }
+.form input:focus { outline: none; border-color: var(--burgundy); }
+.form-msg { font-size: 14px; color: var(--teal); font-weight: 600; min-height: 1.4em; }
+.or { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--terracotta); font-weight: 700; }
+.signup .snake { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; opacity: .9; }
+.signup .snake svg { width: 100%; height: 100%; }
+
+/* Footer */
+footer { background: var(--ink); color: var(--cream); }
+footer .wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(0, 1fr)); gap: 28px; padding-block: 56px 40px; }
+footer .brand b { color: var(--cream); }
+footer h4 { margin: 0 0 10px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--marigold); }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 15px; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--marigold); }
+footer .small { font-size: 13px; opacity: .7; margin-top: 14px; }
+@media (max-width: 760px) { footer .wrap { grid-template-columns: 1fr; } }
+
+/* Reveal: content is visible at rest; it only drifts up a little when it comes into view. */
+.rv { transition: transform .9s cubic-bezier(.2,.7,.2,1); }
+.js .rv:not(.in) { transform: translateY(22px); }
+@media (prefers-reduced-motion: reduce) {
+  .rays, .sun-rise, .marquee .track, .pulse .core, .statement .bgring g, .cer-art .turn { animation: none !important; }
+  .js .rv:not(.in) { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Draft banner, off since launch v1:
+<div class="draft"><div class="wrap"><b>Draft v3 · 30.10.2026</b><span>Photos and video: Ro's own · logo chosen, final drawing follows</span></div></div>
+-->
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Ro Quetzalcoatl, home"><span data-mark="logo"></span><b>Ro Quetzalcoatl</b></a>
+    <nav class="links" aria-label="Main"><a href="#journeys">Journeys</a><a href="#ceremonies">Ceremonies</a><a href="#about">About</a></nav>
+    <a class="btn" href="https://t.me/ooyhcommunity" target="_blank" rel="noopener">Join on Telegram</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 id="hero-title">Out of your head, into your body.</h1>
+        <p class="sub">Ro Quetzalcoatl guides sound journeys, movement journeys and ceremonies in Berlin, rooted in the ancestral traditions of Mexico.</p>
+        <ul class="three">
+          <li><b>Sound</b> · lie down while Ro plays drums and flutes live</li>
+          <li><b>Movement</b> · dance through the five elements</li>
+          <li><b>Ceremony</b> · for the seasons, your birthday, your people</li>
+        </ul>
+        <div class="ctas"><a class="btn" href="#next">See the next journey <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4v12M4 10l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      </div>
+      <div class="sunbox" id="sunbox">
+        <div id="sunrays" aria-hidden="true"></div>
+        <figure class="clip">
+          <video id="herovid" src="img/ro-flute.mp4" poster="img/ro-flute-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ro playing the flute while people rest during a sound journey"></video>
+          <button class="sound" id="soundbtn" type="button" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 8h3l4-3v10l-4-3H3z" fill="currentColor"/><path d="M13 7a4 4 0 0 1 0 6M15.5 5a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>Hear Ro play</span></button>
+        </figure>
+      </div>
+    </div>
+    <div class="horizon" aria-hidden="true" id="horizon"></div>
+    <div class="dunes" aria-hidden="true" id="dunes"></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="track" id="marquee"></div></div>
+
+  <section class="sec" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="bento">
+        <div class="b-photo rv"><img src="img/ro-cajon.jpg" alt="Ro playing live" loading="lazy"></div>
+        <div class="b-title rv">
+          <p class="event-when">Next journey · Sun 08.11. · 15:30 · A Sunday ritual in Berlin</p>
+          <h3 id="next-title">Apapacho</h3>
+          <p class="event-sub">Tea Ceremony, Guided Ecstatic Dance &amp; Sound Experience. All in one afternoon.</p>
+        </div>
+        <div class="b-part rv"><svg viewBox="0 0 120 120" data-ill="sun" aria-hidden="true"></svg><span class="b-label">16:00 · Tea Ceremony</span><p>Tea in silence, to arrive and let the head go quiet</p></div>
+        <div class="b-part rv"><svg viewBox="0 0 120 120" data-ill="solids" aria-hidden="true"></svg><span class="b-label">16:15 · Guided Ecstatic Dance</span><p>Guided movement through earth, water, fire, air and ether. No steps to learn</p></div>
+        <div class="b-part rv"><svg viewBox="0 0 120 120" data-ill="drum" aria-hidden="true"></svg><span class="b-label">18:00 · Sound Experience</span><p>You lie down while Ro plays drums and flutes live around you</p></div>
+        <div class="b-where rv"><span class="b-label">Where</span><p>Futura House, Main Floor<br>Berlin</p><p class="note">No experience needed. Bring comfortable clothes and a journal if you like. Doors open 15:30, please arrive by 16:00.</p></div>
+        <div class="b-ticket rv"><span class="b-label">Ticket</span><b>15–20 €</b><span class="s">Pay what feels right. Tea and snacks included. Money tight? Write to Ro.</span><a class="btn" href="mailto:ro.govindamx@gmail.com?subject=Apapacho%2008.11.">Reserve your spot <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <a class="b-tg rv" href="https://t.me/ooyhcommunity" target="_blank" rel="noopener"><span><b>More dates follow.</b> The Telegram group hears about them first.</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      </div>
+      <!-- Event template (last used for Apapacho, 22.10.2026). Copy back in for the next date with tickets:
+      <div class="bento">
+        <div class="b-photo rv"><img src="img/ro-cajon.jpg" alt="Ro playing live" loading="lazy"></div>
+        <div class="b-title rv">
+          <p class="event-when">Next journey · Thursday 22 October · 19:00 to 22:00</p>
+          <h3 id="next-title">Apapacho</h3>
+          <p class="event-sub">A curated journey with tea, dance and sound</p>
+        </div>
+        <div class="b-part rv"><svg viewBox="0 0 120 120" data-ill="sun" aria-hidden="true"></svg><span class="b-label">Opening</span><p>A tea ceremony to arrive and open the heart</p></div>
+        <div class="b-part rv"><svg viewBox="0 0 120 120" data-ill="solids" aria-hidden="true"></svg><span class="b-label">Journey</span><p>Guided movement through the five elements: earth, water, fire, air and ether</p></div>
+        <div class="b-part rv"><svg viewBox="0 0 120 120" data-ill="drum" aria-hidden="true"></svg><span class="b-label">Closing</span><p>An ancestral sound journey into deep rest</p></div>
+        <div class="b-where rv"><span class="b-label">Where</span><p>Initiative der heilenden Künste<br>Bethanien Südflügel, Mariannenplatz 2a, Kreuzberg</p><p class="note">Bring comfortable clothes, a journal if you like, and an open heart. Spaces are limited to keep the circle intimate.</p></div>
+        <div class="b-ticket rv"><span class="b-label">Ticket</span><b>€25</b><span class="s">suggested, from €20</span><a class="btn" href="https://luma.com/hm8tv1ht" target="_blank" rel="noopener">Get tickets <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+        <a class="b-tg rv" href="https://t.me/ooyhcommunity" target="_blank" rel="noopener"><span><b>More dates follow.</b> The Telegram group hears about them first.</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      -->
+    </div>
+  </section>
+
+  <svg class="zig" data-zig="sand" aria-hidden="true"></svg>
+  <section class="sec journeys" id="journeys" aria-labelledby="j-title">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="kicker">The journeys</div>
+        <h2 id="j-title">Different journeys, one root</h2>
+        <p>Every format carries the wisdom of native and ancestral traditions, through the sound of instruments that belong to the culture. Pick the one that calls you.</p>
+      </div>
+      <div class="jgrid">
+        <article class="jcard rv"><svg class="ill" viewBox="0 0 120 120" data-ill="drum" aria-hidden="true"></svg><h3>Sound Journey</h3><p>Two hours. We arrive, share a warm cup, gather and ground. Then you lie down and Ro plays shamanic drums, flutes, bowls and gongs around you. We close together.</p><div class="facts"><span>2 hours</span><span>Lying down</span><span>Berlin</span></div></article>
+        <article class="jcard rv"><svg class="ill" viewBox="0 0 120 120" data-ill="solids" aria-hidden="true"></svg><h3>Sacred Geometry in Motion</h3><p>Ro's own movement practice. A dance journey through the five elements and their shapes, with live music. Playful and introspective.</p><div class="facts"><span>Movement</span><span>With cacao</span><span>15 to 25 €</span></div></article>
+        <article class="jcard last rv"><svg class="ill" viewBox="0 0 120 120" data-ill="moon" aria-hidden="true"></svg><h3>Seasonal Ceremonies</h3><p>Equinox, solstice, new and full moon. Honouring the change of the season with writing, intentions and fire.</p><div class="facts"><span>4 to 8 a year</span><span>Open to all</span></div></article>
+        <!-- For later, not on the start page (v3, 21.10.2026):
+        <article class="jcard rv"><svg class="ill" viewBox="0 0 120 120" data-ill="float" aria-hidden="true"></svg><h3>Floating Sound Bath</h3><p>You float in warm water while the sound travels through it. At partner venues with a pool.</p><div class="facts"><span>In water</span><span>Partner venues</span></div></article>
+        <article class="jcard rv"><svg class="ill" viewBox="0 0 120 120" data-ill="flute" aria-hidden="true"></svg><h3>Connect with your Sound</h3><p>A workshop to meet the instruments: how to play, how to listen, and how to find your first one.</p><div class="facts"><span>Workshop</span><span>Small group</span></div></article>
+        -->
+      </div>
+
+      <div class="flow rv" aria-label="How a journey flows">
+        <div class="flow-line" id="flowline" aria-hidden="true"></div>
+        <div class="step"><span class="dot">1</span><h3>Arrive</h3><p>Shoes off, a warm cup, a few words.</p></div>
+        <div class="step"><span class="dot">2</span><h3>Ground</h3><p>Breath and body, so the head can rest.</p></div>
+        <div class="step"><span class="dot">3</span><h3>Journey</h3><p>Live sound, movement or ceremony.</p></div>
+        <div class="step"><span class="dot">4</span><h3>Close</h3><p>Back together, slowly, before you go.</p></div>
+      </div>
+      <p class="quote-line rv">"We arrive, we gather, we ground, and then we go through the sound journey." Ro</p>
+    </div>
+  </section>
+  <svg class="zig" data-zig="sand-flip" aria-hidden="true"></svg>
+
+  <section class="statement" aria-labelledby="st-title">
+    <svg class="bgring" viewBox="0 0 620 620" aria-hidden="true" id="bgring"></svg>
+    <div class="wrap">
+      <div class="rv">
+        <h2 id="st-title">Sound and movement <em>as medicine.</em></h2>
+        <p>For the body and for the mind. Ro blends what he learned from different traditions into journeys that feel grounded, warm and well made, and gives back to the roots he learns from.</p>
+      </div>
+      <svg class="pulse" viewBox="0 0 260 260" aria-hidden="true" id="pulse"></svg>
+    </div>
+  </section>
+
+  <section class="sec live" aria-labelledby="live-title">
+    <div class="wrap">
+      <div class="sec-head rv"><div class="kicker">Ro, live</div><h2 id="live-title">Drums, flutes and a full room</h2><p>From festival tents to studios in Berlin.</p></div>
+    </div>
+    <div class="gallery" tabindex="0" aria-label="Photos of Ro, scroll sideways">
+      <figure><img src="img/ro-cajon.jpg" alt="Ro playing a cajon at a festival stage" loading="lazy"><figcaption>Live at a festival</figcaption></figure>
+      <figure><img src="img/ro-smile.jpg" alt="Ro smiling, with a beaded star medallion" loading="lazy"><figcaption>Ro</figcaption></figure>
+      <figure><img src="img/ro-festival.jpg" alt="Ro smiling next to musicians with a drum and a harmonium" loading="lazy"><figcaption>With the band</figcaption></figure>
+      <figure><img src="img/ro-stage-red.jpg" alt="Ro in a hat on a stage in red light" loading="lazy"><figcaption>On stage</figcaption></figure>
+      <figure><img src="img/ro-film.jpg" alt="Black and white film portrait of Ro laughing" loading="lazy"><figcaption>On film</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="sec" id="voices" aria-labelledby="v-title">
+    <div class="wrap">
+      <div class="sec-head rv"><div class="kicker">Voices</div><h2 id="v-title">What people say afterwards</h2></div>
+      <div class="voices">
+        <figure class="voice wide rv" style="margin:0"><blockquote>Grounded, clear, no fuss. Ro guides you straight out of your head and into your body.</blockquote><cite>Alexis Papageorgiou</cite></figure>
+        <figure class="voice rv" style="margin:0"><blockquote>I didn't know what I was coming for. It was something I didn't know I needed.</blockquote><cite>Thomas</cite></figure>
+        <figure class="voice rv" style="margin:0"><blockquote>So grounded and so well made. Something very unique.</blockquote><cite>Silya</cite></figure>
+        <figure class="voice rv" style="margin:0"><blockquote>Very grounded. You can tell he knows what he's doing.</blockquote><cite>Simon</cite></figure>
+      </div>
+    </div>
+  </section>
+
+  <svg class="zig" data-zig="sand" aria-hidden="true"></svg>
+  <section class="sec cer" id="ceremonies" aria-labelledby="c-title">
+    <div class="wrap">
+      <svg class="cer-art rv" viewBox="0 0 400 400" aria-hidden="true" id="cerart"></svg>
+      <div class="rv">
+        <div class="kicker">Private ceremonies</div>
+        <h2 id="c-title" style="font-size:clamp(34px,4.6vw,54px);line-height:1.04;margin-top:10px">A journey for your people</h2>
+        <p style="font-size:18px;margin-top:14px">Ro curates a ceremony around your moment, with live music and a cup of cacao or tea.</p>
+        <ul>
+          <li><span data-mark="sunsmall"></span><span><b>Birthdays</b> · celebrate a new year of your life in a different way</span></li>
+          <li><span data-mark="sunsmall"></span><span><b>Celebrations</b> · weddings and gatherings, with live ambient music</span></li>
+          <li><span data-mark="sunsmall"></span><span><b>Groups and teams</b> · a sound journey for your circle or company</span></li>
+          <li><span data-mark="sunsmall"></span><span><b>One to one</b> · a private sound session, just for you</span></li>
+        </ul>
+        <div class="cer-cta">
+          <ol>
+            <li><b>1</b>Send Ro your date and how many you are</li>
+            <li><b>2</b>He suggests a journey for your moment</li>
+            <li><b>3</b>You celebrate, he brings the music</li>
+          </ol>
+          <a class="btn big" href="#join">Plan your ceremony <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <p class="note">Ro answers personally. Price depends on group size and place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <svg class="zig" data-zig="sand-flip" aria-hidden="true"></svg>
+
+  <section class="sec about" id="about" aria-labelledby="a-title">
+    <div class="wrap">
+      <div class="portrait rv"><img src="img/ro-drum.jpg" alt="Ro in a brown hat, eyes closed, playing a frame drum"></div>
+      <div class="about-copy rv">
+        <div class="kicker">About Ro</div>
+        <h2 id="a-title" style="font-size:clamp(34px,4.6vw,54px);line-height:1.04">Ro Quetzalcoatl</h2>
+        <p>Ro (Rodrigo Romero) is a musician and movement guide from Guadalajara, Mexico, living in Berlin. For fifteen years he has worked with sound, dance and ancestral traditions, and he carries what he learned from his teachers and his roots into every journey.</p>
+        <p>"I'm guiding the experience. I'm curating it with the music." Gentle, warm and direct, he keeps the space and lets the instruments speak.</p>
+        <div class="creds">
+          <div><b>15 years</b>as a multidisciplinary artist</div>
+          <div><b>BA</b>in Psychology</div>
+          <div><b>600 hours</b>yoga training, Árbol del Yoga, Mexico</div>
+          <div><b>Sound</b>training in Spain, instruments from Mexico</div>
+        </div>
+        <div class="kicker">Sound and movement as medicine</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec venues" id="venues" aria-labelledby="ve-title">
+    <div class="wrap">
+      <div class="sec-head rv"><div class="kicker" style="color:var(--marigold)">For venues and partners</div><h2 id="ve-title">Bring a journey to your space</h2><p>Hotels, studios and festivals already have the people. Ro brings the sound, the movement and everything needed to hold the room.</p></div>
+      <div class="vgrid">
+        <article class="vcard rv"><svg viewBox="0 0 120 120" data-ill="float-light" aria-hidden="true"></svg><h3>Hotels and spas</h3><p>Sound baths, floating sessions in your pool, and yoga for your guests.</p><!-- <span class="pdf">PDF for hotels · follows</span> --></article>
+        <article class="vcard rv"><svg viewBox="0 0 120 120" data-ill="drum-light" aria-hidden="true"></svg><h3>Studios</h3><p>A monthly journey for your community, as a special date in your programme.</p><!-- <span class="pdf">PDF for studios · follows</span> --></article>
+        <article class="vcard rv"><svg viewBox="0 0 120 120" data-ill="sun-light" aria-hidden="true"></svg><h3>Festivals</h3><p>One-hour formats: sound journeys and Sacred Geometry in Motion for big and small stages.</p><!-- <span class="pdf">PDF for festivals · follows</span> --></article>
+      </div>
+      <div class="ctas rv"><a class="btn sun" href="#join">Write to Ro</a><span class="note">Berlin regularly, Germany and Europe sometimes, further a few times a year.</span></div>
+    </div>
+  </section>
+
+  <section class="signup" id="join" aria-labelledby="s-title">
+    <div class="wrap">
+      <span data-mark="logo-big"></span>
+      <h2 id="s-title">Find out what events are next</h2>
+      <p>Join the Telegram group for dates, four weeks ahead.</p>
+      <a class="btn" href="https://t.me/ooyhcommunity" target="_blank" rel="noopener">Join the Telegram group</a>
+      <!-- Newsletter, off until a tool (Brevo) is connected:
+      <span class="or">or</span>
+      <form class="form" id="news" novalidate>
+        <label for="email" class="sr" style="position:absolute;left:-9999px">Email</label>
+        <input id="email" name="email" type="email" placeholder="your@email.com" autocomplete="email">
+        <button class="btn ghost" type="submit">Get the newsletter</button>
+      </form>
+      <div class="form-msg" id="formmsg" role="status"></div>
+      -->
+    </div>
+    <div class="snake" aria-hidden="true" id="snake"></div>
+  </section>
+</main>
+
+<footer>
+  <svg class="zig" data-zig="ink" aria-hidden="true" style="background:var(--cream)"></svg>
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#top"><span data-mark="logo-light"></span><b>Ro Quetzalcoatl</b></a>
+      <p class="small">Sound and movement as medicine. Sound journeys, movement and ceremonies in Berlin.</p>
+    </div>
+    <div><h4>Follow</h4><ul><li><a href="https://www.instagram.com/roquetzalcoatl/">Instagram @roquetzalcoatl</a></li><li><a href="https://t.me/ooyhcommunity" target="_blank" rel="noopener">Telegram group</a></li><!-- <li><a href="#join">Newsletter</a></li> --></ul></div>
+    <div><h4>Info</h4><ul><li><a href="#venues">For venues</a></li><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+  </div>
+</footer>
+
+<script>
+// Ro logo: Ouroboros sun (chosen 21.10.2026). One-colour stamp, built from shapes.
+window.RoLogo = (function () {
+  const f = n => +n.toFixed(2);
+  const pol = (cx, cy, r, a) => [cx + Math.cos(a) * r, cy + Math.sin(a) * r];
+  let uid = 0;
+
+  function leafPts(x1, y1, x2, y2, w) {
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2, dx = x2 - x1, dy = y2 - y1, l = Math.hypot(dx, dy) || 1, nx = -dy / l * w, ny = dx / l * w;
+    return `M${f(x1)},${f(y1)}Q${f(mx + nx)},${f(my + ny)} ${f(x2)},${f(y2)}Q${f(mx - nx)},${f(my - ny)} ${f(x1)},${f(y1)}Z`;
+  }
+  function spiral(cx, cy, r, turns, a0) {
+    let d = ''; const n = 40 * turns;
+    for (let i = 0; i <= n; i++) { const t = i / n, a = (a0 || 0) + t * turns * Math.PI * 2, rr = r * (1 - t * .85); d += (i ? 'L' : 'M') + f(cx + Math.cos(a) * rr) + ',' + f(cy + Math.sin(a) * rr); }
+    return d;
+  }
+
+  // Head, facing right, neck at (0,0). Ink mass with carved (paper-coloured) details.
+  function head(c, open) {
+    const I = c.ink, P = c.paper;
+    let s = '';
+    // feather crest: three combed plumes sweeping back
+    [[-4, -16, -46, -44, 9], [-8, -10, -54, -22, 8], [2, -20, -24, -58, 8]].forEach(p => {
+      s += `<path d="${leafPts(p[0], p[1], p[2], p[3], p[4])}" fill="${I}"/>`;
+      s += `<line x1="${f(p[0] + (p[2] - p[0]) * .15)}" y1="${f(p[1] + (p[3] - p[1]) * .15)}" x2="${f(p[0] + (p[2] - p[0]) * .85)}" y2="${f(p[1] + (p[3] - p[1]) * .85)}" stroke="${P}" stroke-width="1.6" stroke-linecap="round"/>`;
+      for (let k = 1; k <= 4; k++) { const t = .2 + k * .14, x = p[0] + (p[2] - p[0]) * t, y = p[1] + (p[3] - p[1]) * t, dx = p[2] - p[0], dy = p[3] - p[1], l = Math.hypot(dx, dy), nx = -dy / l * p[4] * .55, ny = dx / l * p[4] * .55; s += `<line x1="${f(x - nx)}" y1="${f(y - ny)}" x2="${f(x + nx)}" y2="${f(y + ny)}" stroke="${P}" stroke-width="1.3" stroke-linecap="round"/>`; }
+    });
+    // lower jaw (opens)
+    s += `<g transform="rotate(${f(12 * open)} -2 6)"><path d="M-8,4 L46,8 Q56,9 56,15 Q55,21 48,22 L-4,22 Q-12,20 -8,4 Z" fill="${I}"/>`;
+    [14, 24, 34, 44].forEach(x => s += `<path d="M${x},9 L${x + 4},1 L${x + 8},9 Z" fill="${I}"/>`);
+    [6, 16, 26, 36].forEach(x => s += `<line x1="${x}" y1="16" x2="${x + 6}" y2="16" stroke="${P}" stroke-width="2.2" stroke-linecap="round"/>`);
+    s += `</g>`;
+    // upper jaw and skull
+    s += `<path d="M-14,-4 Q-16,-24 4,-28 Q22,-31 34,-24 L54,-18 Q66,-15 66,-6 Q66,2 58,2 L4,3 Q-10,3 -14,-4 Z" fill="${I}"/>`;
+    [16, 28, 40, 52].forEach(x => s += `<path d="M${x},2 L${x + 4},12 L${x + 8},2 Z" fill="${I}"/>`);
+    // snout curl
+    s += `<circle cx="60" cy="-20" r="8.5" fill="${I}"/><path d="${spiral(60, -20, 6.2, 1.6, Math.PI)}" fill="none" stroke="${P}" stroke-width="1.7" stroke-linecap="round"/>`;
+    // carved details: eye, brow scroll, cheek scroll, nostril, jaw line
+    s += `<circle cx="20" cy="-14" r="6.4" fill="${P}"/><circle cx="21.5" cy="-14" r="3" fill="${I}"/>`;
+    s += `<path d="M10,-22 Q20,-30 30,-22" fill="none" stroke="${P}" stroke-width="2" stroke-linecap="round"/>`;
+    s += `<path d="${spiral(0, -8, 6, 1.3, 0)}" fill="none" stroke="${P}" stroke-width="1.8" stroke-linecap="round"/>`;
+    s += `<circle cx="50" cy="-9" r="2.2" fill="${P}"/>`;
+    s += `<path d="M30,-5 L58,-5" stroke="${P}" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="4 3"/>`;
+    // forked tongue
+    s += `<path d="M56,${f(6 + 7 * open)} L74,${f(4 + 8 * open)} M74,${f(4 + 8 * open)} l7,-5 M74,${f(4 + 8 * open)} l7,4" fill="none" stroke="${I}" stroke-width="2.6" stroke-linecap="round"/>`;
+    return s;
+  }
+  const placeHead = (c, x, y, angDeg, sc, open) => { const flip = Math.cos(angDeg * Math.PI / 180) < 0; return `<g transform="translate(${f(x)} ${f(y)}) rotate(${f(angDeg)}) scale(${sc} ${flip ? -sc : sc})">${head(c, open)}</g>`; };
+
+  // Body: ink band with a comb of spines on one side, rings and bars cut out along the middle, feather tail.
+  // stable: measure along x only, so spines and rings stay on the same points while the body waves (no flicker).
+  function body(pts, w0, w1, c, side, stable) {
+    const I = c.ink, P = c.paper, n = pts.length, N = [], L = [], R = [];
+    let acc = [0];
+    for (let i = 1; i < n; i++) acc.push(acc[i - 1] + (stable ? Math.abs(pts[i][0] - pts[i - 1][0]) : Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1])));
+    for (let i = 0; i < n; i++) {
+      const t = i / (n - 1), w = w0 + (w1 - w0) * Math.pow(t, 1.15), p0 = pts[Math.max(0, i - 1)], p1 = pts[Math.min(n - 1, i + 1)];
+      let tx = p1[0] - p0[0], ty = p1[1] - p0[1]; const l = Math.hypot(tx, ty) || 1; tx /= l; ty /= l;
+      N.push([-ty, tx, w]); L.push([pts[i][0] - ty * w / 2, pts[i][1] + tx * w / 2]); R.push([pts[i][0] + ty * w / 2, pts[i][1] - tx * w / 2]);
+    }
+    let s = '';
+    // spines
+    let next = 6;
+    for (let i = 1; i < n - 2; i++) {
+      if (acc[i] < next) continue;
+      const [nx, ny, w] = N[i]; next = acc[i] + Math.max(4.2, w * .32);
+      const sx = pts[i][0] + nx * w / 2 * side, sy = pts[i][1] + ny * w / 2 * side, len = w * .42;
+      s += `<line x1="${f(sx - nx * side)}" y1="${f(sy - ny * side)}" x2="${f(sx + nx * side * len)}" y2="${f(sy + ny * side * len)}" stroke="${I}" stroke-width="${f(Math.max(1.6, w * .12))}" stroke-linecap="round"/>`;
+    }
+    s += `<path d="M${L.map(p => f(p[0]) + ',' + f(p[1])).join('L')}L${R.slice().reverse().map(p => f(p[0]) + ',' + f(p[1])).join('L')}Z" fill="${I}"/>`;
+    // carved rings and bars
+    let k = 0; next = w0 * .9;
+    for (let i = 1; i < n - 2; i++) {
+      if (acc[i] < next) continue;
+      const [nx, ny, w] = N[i]; if (w < 7) break;
+      next = acc[i] + w * .62;
+      const x = pts[i][0], y = pts[i][1];
+      if (k % 2 === 0) s += `<circle cx="${f(x)}" cy="${f(y)}" r="${f(w * .24)}" fill="${P}"/><circle cx="${f(x)}" cy="${f(y)}" r="${f(w * .1)}" fill="${I}"/>`;
+      else s += `<line x1="${f(x - nx * w * .3)}" y1="${f(y - ny * w * .3)}" x2="${f(x + nx * w * .3)}" y2="${f(y + ny * w * .3)}" stroke="${P}" stroke-width="${f(w * .13)}" stroke-linecap="round"/>`;
+      k++;
+    }
+    // edge line on the other side
+    s += `<path d="M${pts.slice(2, n - 3).map((p, j) => { const [nx, ny, w] = N[j + 2]; return f(p[0] - nx * w * .36 * side) + ',' + f(p[1] - ny * w * .36 * side); }).join('L')}" fill="none" stroke="${P}" stroke-width="1.2" stroke-linecap="round" opacity=".9"/>`;
+    // feather tail
+    const tl = pts[n - 1], tp = pts[n - 4], ang = Math.atan2(tl[1] - tp[1], tl[0] - tp[0]);
+    [-.45, 0, .45].forEach(d => { const [x2, y2] = pol(tl[0], tl[1], w0 * 1.15, ang + d); s += `<path d="${leafPts(tl[0], tl[1], x2, y2, w0 * .17)}" fill="${I}"/><line x1="${f(tl[0])}" y1="${f(tl[1])}" x2="${f(tl[0] + (x2 - tl[0]) * .8)}" y2="${f(tl[1] + (y2 - tl[1]) * .8)}" stroke="${P}" stroke-width="1.1"/>`; });
+    return s;
+  }
+  const angAt = (pts, i, j) => Math.atan2(pts[i][1] - pts[j][1], pts[i][0] - pts[j][0]) * 180 / Math.PI;
+
+  // Sun: disc with carved ring and pointed rays.
+  function sun(c, x, y, r, n) {
+    const fill = c.sun || c.ink, P = c.paper;
+    let s = '';
+    for (let i = 0; i < n; i++) { const a = i * 2 * Math.PI / n, [x1, y1] = pol(x, y, r + 3, a - .12), [x2, y2] = pol(x, y, r * 1.6, a), [x3, y3] = pol(x, y, r + 3, a + .12); s += `<path d="M${f(x1)},${f(y1)}L${f(x2)},${f(y2)}L${f(x3)},${f(y3)}Z" fill="${fill}"/>`; }
+    s += `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}"/><circle cx="${x}" cy="${y}" r="${f(r * .66)}" fill="none" stroke="${P}" stroke-width="${f(Math.max(1.4, r * .08))}"/><circle cx="${x}" cy="${y}" r="${f(r * .22)}" fill="${P}"/>`;
+    return s;
+  }
+  function halfSun(c, x, y, r, n) {
+    const fill = c.sun || c.ink, P = c.paper;
+    let s = '';
+    for (let i = 0; i < n; i++) { const a = Math.PI + (i + .5) * Math.PI / n, [x1, y1] = pol(x, y, r + 3, a - .1), [x2, y2] = pol(x, y, r * 1.55, a), [x3, y3] = pol(x, y, r + 3, a + .1); s += `<path d="M${f(x1)},${f(y1)}L${f(x2)},${f(y2)}L${f(x3)},${f(y3)}Z" fill="${fill}"/>`; }
+    return s + `<path d="M${x - r},${y} A${r},${r} 0 0 1 ${x + r},${y} Z" fill="${fill}"/><path d="M${f(x - r * .62)},${y} A${f(r * .62)},${f(r * .62)} 0 0 1 ${f(x + r * .62)},${y}" fill="none" stroke="${P}" stroke-width="1.6"/>`;
+  }
+
+  // Stamp texture: rough edge plus a few ink gaps, like a hand-pressed print.
+  function stampDefs(id, strength) {
+    return `<filter id="${id}" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="4" result="w"/><feDisplacementMap in="SourceGraphic" in2="w" scale="${strength}" result="d"/><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="1" seed="11" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -16 11.9" result="holes"/><feComposite in="d" in2="holes" operator="in"/></filter>`;
+  }
+
+
+  function ouroboros(c) {
+    const pts = []; for (let a = -2.2; a <= -2.2 + Math.PI * 1.78; a += .03) pts.push(pol(100, 100, 64, a));
+    return sun(c, 100, 100, 22, 16) + body(pts, 26, 10, c, 1) + placeHead(c, pts[0][0], pts[0][1], angAt(pts, 0, 3), .58, .8);
+  }
+  // The logo dragon along any path, head at pts[0]. Same carved head and body as the mark; used for every serpent on the page.
+  window.RoDragon = (pts, w0, w1, c, side, open, stable) => body(pts, w0, w1, c, side || 1, stable) + placeHead(c, pts[0][0], pts[0][1], angAt(pts, 0, 3), f(w0 * .0223), open ?? .8);
+  window.RoStampDefs = stampDefs;
+  return function (c, strength, attrs) {
+    const id = 'ro' + (++uid);
+    return `<svg viewBox="0 0 200 200" ${attrs || ''} aria-hidden="true"><defs>${stampDefs(id, strength ?? 1.6)}</defs><g filter="url(#${id})">${ouroboros(c)}</g></svg>`;
+  };
+})();
+</script>
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  const C = { cream: '#f8efe2', sand: '#f1e0c6', dune: '#e9c9a0', marigold: '#e9a23b', terracotta: '#c8643b', coral: '#e2553b', burgundy: '#7a1f3d', purple: '#6b3a78', teal: '#1f7a6d', ink: '#3f0f22' };
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const f = n => +n.toFixed(2);
+  const pol = (cx, cy, r, a) => [cx + Math.cos(a) * r, cy + Math.sin(a) * r];
+  const leaf = (cx, cy, r1, r2, a, w) => {
+    const [bx, by] = pol(cx, cy, r1, a), [tx, ty] = pol(cx, cy, r2, a);
+    const [l1x, l1y] = pol(cx, cy, (r1 + r2) / 2, a - w), [l2x, l2y] = pol(cx, cy, (r1 + r2) / 2, a + w);
+    return `M${f(bx)},${f(by)}Q${f(l1x)},${f(l1y)} ${f(tx)},${f(ty)}Q${f(l2x)},${f(l2y)} ${f(bx)},${f(by)}Z`;
+  };
+  const rayFan = (cx, cy, r1, r2, n, a0, a1, w, fill) => { let s = ''; for (let i = 0; i < n; i++) { const a = n === 1 ? a0 : a0 + (a1 - a0) * i / (n - 1); s += `<path d="${leaf(cx, cy, r1, r2, a, w)}" fill="${fill}"/>`; } return s; };
+  const rayRing = (cx, cy, r1, r2, n, w, fill, off) => rayFan(cx, cy, r1, r2, n, off || 0, (off || 0) + 2 * Math.PI * (n - 1) / n, w, fill);
+
+  // Serpent built from a tapered body, scale dots, a head with an eye and a crest of feathers.
+  function serpent(pts, w0, w1, c, opt) {
+    opt = opt || {};
+    const n = pts.length, L = [], R = [];
+    for (let i = 0; i < n; i++) {
+      const t = i / (n - 1), w = w0 + (w1 - w0) * Math.pow(t, 1.3);
+      const p0 = pts[Math.max(0, i - 1)], p1 = pts[Math.min(n - 1, i + 1)];
+      let tx = p1[0] - p0[0], ty = p1[1] - p0[1]; const l = Math.hypot(tx, ty) || 1; tx /= l; ty /= l;
+      L.push([pts[i][0] - ty * w / 2, pts[i][1] + tx * w / 2]); R.push([pts[i][0] + ty * w / 2, pts[i][1] - tx * w / 2]);
+    }
+    let s = `<path d="M${L.map(p => f(p[0]) + ',' + f(p[1])).join('L')}L${R.reverse().map(p => f(p[0]) + ',' + f(p[1])).join('L')}Z" fill="${c.body}"/>`;
+    const step = opt.dotStep || 5;
+    for (let i = 4; i < n - 3; i += step) {
+      const t = i / (n - 1), w = w0 + (w1 - w0) * Math.pow(t, 1.3);
+      if (w > 4) s += `<circle cx="${f(pts[i][0])}" cy="${f(pts[i][1])}" r="${f(w * .17)}" fill="${c.dot}"/>`;
+    }
+    const [hx, hy] = pts[0], dx = pts[0][0] - pts[2][0], dy = pts[0][1] - pts[2][1], dl = Math.hypot(dx, dy) || 1;
+    const ux = dx / dl, uy = dy / dl, hr = w0 * .62, ang = Math.atan2(uy, ux), side = opt.crestSide || -1;
+    [0, 1, 2].forEach(i => { s += `<path d="${leaf(hx, hy, hr * .6, hr * (2.7 - i * .35), ang + Math.PI + side * (.9 + i * .45), .2)}" fill="${i === 1 ? c.crest2 : c.crest}"/>`; });
+    const cx = hx + ux * hr * .55, cy = hy + uy * hr * .55;
+    s += `<ellipse cx="${f(cx)}" cy="${f(cy)}" rx="${f(hr * 1.35)}" ry="${f(hr * .95)}" transform="rotate(${f(ang * 180 / Math.PI)} ${f(cx)} ${f(cy)})" fill="${c.body}"/>`;
+    s += `<circle cx="${f(hx + ux * hr * .7 - uy * side * hr * .45)}" cy="${f(hy + uy * hr * .7 + ux * side * hr * .45)}" r="${f(hr * .24)}" fill="${c.eye}"/>`;
+    return s;
+  }
+  const SERP = { body: C.burgundy, dot: C.cream, crest: C.terracotta, crest2: C.teal, eye: C.marigold };
+  const SERP_LIGHT = { body: C.cream, dot: C.teal, crest: C.marigold, crest2: C.cream, eye: C.teal };
+
+  // Logo placeholder: sunrise serpent (sketch 01).
+  function logo(c, rayC, sunC) {
+    const pts = []; for (let x = 20; x <= 146; x += 2) { const t = (x - 20) / 126, e = .4 + .6 * Math.sin(Math.PI * t); pts.push([x, 108 + 7 * e * Math.sin(t * Math.PI * 2.6 + .3)]); }
+    return `<svg viewBox="0 0 160 160" aria-hidden="true">${rayFan(80, 96, 34, 54, 9, Math.PI, 2 * Math.PI, .14, rayC)}<path d="M50,96 A30,30 0 0 1 110,96 Z" fill="${sunC}"/>${serpent(pts, 13, 2.5, c)}</svg>`;
+  }
+  const marks = {
+    logo: () => window.RoLogo({ ink: C.burgundy, paper: C.cream, sun: C.marigold }, .8),
+    'logo-light': () => window.RoLogo({ ink: C.cream, paper: C.ink, sun: C.marigold }, .8),
+    'logo-big': () => window.RoLogo({ ink: C.burgundy, paper: C.cream, sun: C.marigold }, 1.4, 'style="width:150px;height:150px"'),
+    sunsmall: () => `<svg viewBox="0 0 40 40" aria-hidden="true">${rayRing(20, 20, 11, 19, 8, .25, C.terracotta)}<circle cx="20" cy="20" r="9" fill="${C.marigold}"/></svg>`
+  };
+  document.querySelectorAll('[data-mark]').forEach(el => { el.innerHTML = marks[el.dataset.mark](); el.style.display = 'inline-flex'; });
+
+  // Zigzag tile band (Mírate frame).
+  function zig(el, kind) {
+    const map = { sand: [C.cream, C.sand, C.terracotta, C.teal], 'sand-flip': [C.sand, C.cream, C.teal, C.terracotta], ink: [C.cream, C.ink, C.terracotta, C.marigold] };
+    const [top, bottom, a, b] = map[kind];
+    const id = 'z' + Math.random().toString(36).slice(2, 7);
+    el.setAttribute('preserveAspectRatio', 'none');
+    el.innerHTML = `<defs><pattern id="${id}" width="52" height="26" patternUnits="userSpaceOnUse"><rect width="52" height="26" fill="${top}"/><path d="M0,26 L13,4 L26,26 Z" fill="${a}"/><path d="M26,26 L39,4 L52,26 Z" fill="${b}"/><rect y="22" width="52" height="4" fill="${bottom}"/></pattern></defs><rect width="100%" height="26" fill="url(#${id})"/>`;
+    el.style.background = bottom;
+  }
+  document.querySelectorAll('[data-zig]').forEach(el => zig(el, el.dataset.zig));
+
+  // Hero sun
+  document.getElementById('sunrays').innerHTML = `<svg viewBox="0 0 560 340"><g class="sun-rise"><g class="rays">${rayRing(280, 300, 150, 250, 24, .07, C.terracotta)}${rayRing(280, 300, 150, 205, 24, .05, C.marigold, Math.PI / 24)}</g><circle cx="280" cy="300" r="140" fill="${C.marigold}"/><circle cx="280" cy="300" r="104" fill="#efb354"/><circle cx="280" cy="300" r="64" fill="#f3c26c"/></g></svg>`;
+
+  // Dunes with gentle parallax
+  const dunes = document.getElementById('dunes');
+  function duneSvg() {
+    const W = 1600, H = 230, cols = ['#efcf9f', C.marigold, C.terracotta, C.teal, C.burgundy, C.purple];
+    let s = '';
+    cols.forEach((c, k) => {
+      const base = 60 + k * 30, A = 18 - k * 1.6, fr = .004 + k * .0014, ph = k * 1.7;
+      let d = 'M0,' + H;
+      for (let x = 0; x <= W; x += 16) d += 'L' + x + ',' + f(base + A * Math.sin(x * fr + ph) + A * .5 * Math.sin(x * fr * 2.3 + ph));
+      s += `<path data-k="${k}" d="${d}L${W},${H}Z" fill="${c}"/>`;
+    });
+    return `<svg viewBox="0 0 1600 230" preserveAspectRatio="xMidYMax slice">${s}</svg>`;
+  }
+  dunes.innerHTML = duneSvg();
+  const layers = dunes.querySelectorAll('path');
+
+  // Living horizon serpent
+  const horizon = document.getElementById('horizon');
+  horizon.innerHTML = '<svg viewBox="0 0 1600 90" preserveAspectRatio="xMidYMid slice"><g id="hs"></g></svg>';
+  const hs = document.getElementById('hs');
+  function drawHorizon(ph) {
+    const pts = [];
+    for (let x = 250; x <= 1600; x += 10) { const t = (x - 250) / 1350, e = .35 + .65 * Math.sin(Math.PI * Math.min(1, t * 1.15)); pts.push([x, 46 + 16 * e * Math.sin(t * Math.PI * 5 - ph)]); }
+    hs.innerHTML = window.RoDragon(pts, 36, 6, { ink: C.burgundy, paper: C.cream }, -1, .8, true);
+  }
+  drawHorizon(0);
+
+  // Marquee
+  const sunIcon = `<svg viewBox="0 0 40 40">${rayRing(20, 20, 11, 19, 8, .25, C.marigold)}<circle cx="20" cy="20" r="8" fill="${C.marigold}"/></svg>`;
+  const words = ['Sound journeys', 'Sacred Geometry in Motion', 'Ceremonies'];
+  const run = words.map(w => `<span>${w}${sunIcon}</span>`).join('');
+  document.getElementById('marquee').innerHTML = run + run;
+
+  // Journey illustrations
+  const ill = {
+    drum: (dark) => {
+      let zz = ''; for (let i = 0; i <= 32; i++) { const [x, y] = pol(60, 60, i % 2 ? 40 : 31, i * Math.PI / 16); zz += (i ? 'L' : 'M') + f(x) + ',' + f(y); }
+      const ink = dark ? C.cream : C.burgundy;
+      return rayRing(60, 60, 45, 57, 16, .12, C.terracotta, Math.PI / 16) + `<circle cx="60" cy="60" r="42" fill="none" stroke="${ink}" stroke-width="3.5"/><path d="${zz}" fill="none" stroke="${ink}" stroke-width="2.6" stroke-linejoin="round"/><circle cx="60" cy="60" r="28" fill="${C.marigold}"/><circle cx="60" cy="60" r="19" fill="none" stroke="${C.terracotta}" stroke-width="2"/><circle cx="60" cy="60" r="6" fill="${ink}"/>`;
+    },
+    solids: () => {
+      const poly = (cx, cy, r, n, rot) => { let d = ''; for (let i = 0; i < n; i++) { const [x, y] = pol(cx, cy, r, rot + i * 2 * Math.PI / n); d += (i ? 'L' : 'M') + f(x) + ',' + f(y); } return d + 'Z'; };
+      const cols = [C.coral, C.teal, C.marigold, C.purple, C.burgundy];
+      const shapes = [[3, -Math.PI / 2], [4, Math.PI / 4], [4, 0], [5, -Math.PI / 2], [6, 0]];
+      let s = `<circle cx="60" cy="60" r="50" fill="none" stroke="${C.dune}" stroke-width="2"/>`;
+      shapes.forEach((sh, i) => { const [x, y] = pol(60, 60, 34, -Math.PI / 2 + i * 2 * Math.PI / 5); s += `<path d="${poly(x, y, 13, sh[0], sh[1])}" fill="none" stroke="${cols[i]}" stroke-width="3" stroke-linejoin="round"/>`; });
+      return s + `<circle cx="60" cy="60" r="11" fill="${C.marigold}"/>`;
+    },
+    float: (dark) => {
+      let w = ''; for (let k = 0; k < 3; k++) { let d = ''; for (let x = 8; x <= 112; x += 4) d += (x === 8 ? 'M' : 'L') + x + ',' + f(76 + k * 12 + 4 * Math.sin(x * .12 + k)); w += `<path d="${d}" fill="none" stroke="${[C.teal, dark ? C.cream : C.purple, C.terracotta][k]}" stroke-width="4" stroke-linecap="round"/>`; }
+      return rayFan(60, 66, 28, 44, 7, Math.PI * 1.08, Math.PI * 1.92, .16, C.terracotta) + `<path d="M36,66 A24,24 0 0 1 84,66 Z" fill="${C.marigold}"/>` + w;
+    },
+    moon: () => {
+      let s = ''; const ph = [0, .35, .7, 1];
+      ph.forEach((p, i) => { const x = 18 + i * 28; s += `<circle cx="${x}" cy="86" r="11" fill="${C.burgundy}"/><circle cx="${x + 22 * (1 - p) - 0}" cy="86" r="11" fill="${C.cream}" opacity="${p === 1 ? 0 : 1}"/>`; });
+      return rayRing(60, 40, 18, 30, 12, .18, C.terracotta) + `<circle cx="60" cy="40" r="15" fill="${C.marigold}"/>` + s;
+    },
+    flute: () => {
+      let s = `<rect x="10" y="78" width="66" height="13" rx="6.5" fill="${C.burgundy}"/>`;
+      [22, 35, 48, 61].forEach(x => s += `<circle cx="${x}" cy="84.5" r="2.5" fill="${C.cream}"/>`);
+      [14, 24, 34].forEach((r, i) => s += `<path d="M${84 + i * 2},${84 - r} A${r},${r} 0 0 1 ${84 + i * 2},${84 + r}" fill="none" stroke="${[C.teal, C.terracotta, C.marigold][i]}" stroke-width="4" stroke-linecap="round"/>`);
+      return s + rayRing(92, 30, 9, 17, 8, .25, C.terracotta) + `<circle cx="92" cy="30" r="8" fill="${C.marigold}"/>`;
+    },
+    sun: () => rayRing(60, 60, 26, 52, 16, .14, C.marigold) + `<circle cx="60" cy="60" r="22" fill="${C.cream}"/><circle cx="60" cy="60" r="10" fill="${C.marigold}"/>`
+  };
+  document.querySelectorAll('[data-ill]').forEach(el => {
+    const k = el.dataset.ill, dark = k.endsWith('-light'), base = k.replace('-light', '');
+    el.innerHTML = ill[base](dark);
+  });
+
+  // Flow line serpent
+  const flow = document.getElementById('flowline');
+  flow.innerHTML = '<svg viewBox="0 0 1000 60" preserveAspectRatio="none"><g id="fs"></g></svg>';
+  const fsG = document.getElementById('fs');
+  function drawFlow(ph) {
+    const pts = []; for (let x = 990; x >= 10; x -= 10) pts.push([x, 30 + 8 * Math.sin(x * .012 + ph)]);
+    fsG.innerHTML = window.RoDragon(pts, 16, 5, { ink: C.dune, paper: C.sand }, -1, .8, true);
+  }
+  drawFlow(0);
+
+  // Statement sun + background ring serpent
+  document.getElementById('pulse').innerHTML = `<g class="core">${rayRing(130, 130, 62, 118, 20, .1, C.marigold)}<circle cx="130" cy="130" r="56" fill="${C.marigold}"/><circle cx="130" cy="130" r="36" fill="${C.coral}"/><circle cx="130" cy="130" r="16" fill="${C.cream}"/></g>`;
+  const ringPts = []; for (let a = -1.6; a <= -1.6 + Math.PI * 1.85; a += .03) ringPts.push(pol(310, 310, 250 + 10 * Math.sin(a * 8), a));
+  document.getElementById('bgring').innerHTML = `<defs>${window.RoStampDefs('ringst', 3)}</defs><g><g filter="url(#ringst)">${window.RoDragon(ringPts, 70, 18, { ink: C.cream, paper: C.burgundy }, 1)}</g></g>`;
+
+  // Ceremonies: the logo, large, as a stamp
+  document.getElementById('cerart').innerHTML = `<g transform="scale(2)">${window.RoLogo({ ink: C.burgundy, paper: C.sand, sun: C.marigold }, 2).replace(/^<svg[^>]*>/, '').replace(/<\/svg>$/, '')}</g>`;
+
+  // Signup serpent
+  const snake = document.getElementById('snake');
+  snake.innerHTML = '<svg viewBox="0 0 1600 120" preserveAspectRatio="xMidYMax slice"><g id="ss"></g></svg>';
+  const ssG = document.getElementById('ss');
+  function drawSnake(ph) {
+    const pts = []; for (let x = 1400; x >= 140; x -= 10) pts.push([x, 70 + 18 * Math.sin(x * .007 + ph)]);
+    ssG.innerHTML = window.RoDragon(pts, 30, 6, { ink: C.coral, paper: C.cream }, -1, .8, true);
+  }
+  drawSnake(0);
+
+  // Motion loop: serpents slither, dunes drift with scroll.
+  if (!reduce) {
+    let last = 0;
+    const loop = t => {
+      if (t - last > 33) {
+        last = t; const ph = t / 1000;
+        drawHorizon(ph * 1.2);
+        drawFlow(ph * 1.5);
+        drawSnake(ph);
+      }
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+    window.addEventListener('scroll', () => {
+      const y = Math.min(window.scrollY, 700);
+      layers.forEach((p, k) => p.style.transform = `translateY(${f(y * (.02 + k * .025))}px)`);
+    }, { passive: true });
+  }
+
+  // Reveal
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' }) : null;
+  document.querySelectorAll('.rv').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+
+  // Hero video: sound on tap, no autoplay for reduced motion
+  const vid = document.getElementById('herovid'), sb = document.getElementById('soundbtn');
+  if (reduce) { vid.removeAttribute('autoplay'); vid.pause(); }
+  sb.addEventListener('click', () => {
+    const on = vid.muted;
+    vid.muted = !on;
+    if (on) { vid.play().catch(() => {}); }
+    sb.setAttribute('aria-pressed', String(on));
+    sb.querySelector('span').textContent = on ? 'Sound on' : 'Hear Ro play';
+  });
+
+  // Newsletter form (draft: not connected)
+  const news = document.getElementById('news');
+  if (news) news.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = document.getElementById('email').value.trim();
+    document.getElementById('formmsg').textContent = /.+@.+\..+/.test(v) ? 'Thank you. (Draft: the newsletter is not connected yet.)' : 'Please enter your email address.';
+  });
+})();
+</script>
+
+</body>
+</html>
